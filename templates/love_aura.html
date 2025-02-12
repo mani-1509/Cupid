@@ -1,0 +1,49 @@
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/love_aura.css') }}"
+  />
+</head>
+
+{% extends "base.html" %} {% block content %}
+
+<div class="camcontainer">
+  <div class="cam_content">
+    <h1>💖 Capture Your Love Aura 💖</h1>
+    <p>Upload or capture an image, and let AI reveal your romantic vibe!</p>
+
+    <div class="camera-section">
+      <video id="video" width="320" height="240" autoplay></video>
+      <div class="button-group">
+        <button id="startBtn">Start Camera</button>
+        <button id="stopBtn" disabled>Stop Camera</button>
+        <button id="captureBtn" disabled>Capture Love Aura</button>
+      </div>
+      <canvas id="canvas" width="320" height="240"></canvas>
+      <img id="capturedImage" src="" alt="Captured Image" />
+    </div>
+
+    <div class="upload-section">
+      <h2>📸 Or Upload Your Image</h2>
+      <form id="uploadForm">
+        <input
+          type="file"
+          id="imageFile"
+          name="file"
+          accept="image/*"
+          placeholder="image"
+        />
+        <input type="url" id="imageUrl" placeholder="Paste Image URL" />
+        <button type="submit">Submit</button>
+        <button type="button" id="clearBtn">Clear</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="result"></div>
+</div>
+
+<script src="{{ url_for('static', filename='js/love_aura.js') }}"></script>
+
+{% endblock %}

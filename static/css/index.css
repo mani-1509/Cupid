@@ -1,0 +1,172 @@
+/* General Styles */
+* {
+  color: #ffebf3;
+  line-height: 1.6;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #ff6b6b, #ff9a9e);
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.btn {
+  background: #ff4c4c;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-in;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #ff6b6b;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff6b6b;
+}
+
+/* Features Section */
+.features-section {
+  padding: 50px 20px;
+  background-color: #ff9a9e;
+  text-align: center;
+}
+
+.features-section h2 {
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.feature-item {
+  padding: 20px;
+  background: #ff6b6b;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(255, 107, 107, 0.5);
+}
+
+.icon {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.feature-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.feature-item p {
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* About Section */
+.about-section {
+  padding: 50px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #ff9a9e, #ff6b6b);
+}
+
+.about-section h2 {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+  }
+}
+
+/* Hero Section Animation */
+.hero-content h1,
+.hero-content p {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hero-content .btn {
+  animation: zoomIn 1.2s ease-in-out;
+}
+
+/* Features Section Animation */
+.feature-grid {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.feature-item {
+  animation: slideIn 1s ease-in-out;
+}
+
+/* About Section Animation */
+.about-section h2,
+.about-section p {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Button Hover Glow Animation */
+.btn:hover {
+  animation: glowPulse 1.5s infinite;
+}

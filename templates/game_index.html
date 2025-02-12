@@ -1,0 +1,30 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/game_index.css') }}"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+</head>
+{% extends "base.html" %} {% block content %}
+<div class="arcade-container">
+  <h1>Love Confession Arcade 💕</h1>
+
+  <div class="game-grid">
+    {% for game_id, game in games.items() %}
+    <div class="game-card">
+      <h2>{{ game.name }}</h2>
+      <p>{{ game.description }}</p>
+      <a
+        href="{{ url_for('routes.play_game', game_id=game_id) }}"
+        class="play-button"
+      >
+        Play Now! 🎮
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

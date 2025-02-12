@@ -1,0 +1,67 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/index.css') }}"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+</head>
+{% extends "base.html" %} {% block content %}
+
+<header class="hero-section">
+  <div class="hero-content">
+    <h1>Your Personal AI Love Companion</h1>
+    <p>
+      Discover your love aura, confess your feelings, and find your perfect
+      match with fun and interactive AI-powered apps.
+    </p>
+    <a href="/love_aura" class="btn">Explore Now</a>
+  </div>
+</header>
+
+<section id="features" class="features-section">
+  <h2>Core Features</h2>
+  <div class="feature-grid">
+    <div class="feature-item">
+      <i class="fas fa-heart icon"></i>
+      <h3>AI Love Detector</h3>
+      <p>
+        Upload a voice note or image, and AI will analyze it to predict your
+        "love aura." Get fun results like "Hopeless Romantic" or "Flirt Master."
+      </p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-gamepad icon"></i>
+      <h3>Love Confession Arcade</h3>
+      <p>
+        Play fun mini-games to unlock cute confession messages! Break the ice,
+        catch hearts, and more.
+      </p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-puzzle-piece icon"></i>
+      <h3>AI Love Language Matcher</h3>
+      <p>
+        Take a fun quiz to discover your love language. Get personalized date
+        ideas and gift suggestions.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-section">
+  <h2>About Love-Themed Apps</h2>
+  <p>
+    Love-Themed Apps are designed to make love fun and interactive. With
+    advanced AI and playful features, these apps help you explore your emotions,
+    confess your feelings, and connect with others in a meaningful way.
+  </p>
+</section>
+
+{% endblock %}

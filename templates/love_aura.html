@@ -4,11 +4,8 @@
     rel="stylesheet"
     href="{{ url_for('static', filename='css/love_aura.css') }}"
   />
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
-
 {% extends "base.html" %} {% block content %}
-
 <div class="camcontainer">
   <div class="cam_content">
     <h1>💖 Capture Your Love Aura 💖</h1>
@@ -42,9 +39,11 @@
     </div>
   </div>
 
-  <div id="result"></div>
+  <!-- Result Section with Markdown Support -->
+  <div id="result" class="result-section">
+    <div id="loading" class="loading hidden">Loading...</div>
+  </div>
 </div>
 
 <script src="{{ url_for('static', filename='js/love_aura.js') }}"></script>
-
 {% endblock %}

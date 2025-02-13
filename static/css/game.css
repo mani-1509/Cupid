@@ -1,0 +1,21 @@
+/* Hide Game Container on Small/Medium Screens */
+@media screen and (max-width: 1023px) {
+  #gameContainer {
+    display: none;
+  }
+
+  #screenSizeMessage {
+    display: block;
+  }
+}
+
+/* Show Game Container on Large Screens */
+@media screen and (min-width: 1024px) {
+  #gameContainer {
+    display: block;
+  }
+
+  #screenSizeMessage {
+    display: none;
+  }
+}

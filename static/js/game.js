@@ -21,7 +21,13 @@ const gameConfig = {
   },
 };
 
-let game = new Phaser.Game(gameConfig);
+// Check screen width before initializing the game
+if (window.innerWidth >= 1024) {
+  let game = new Phaser.Game(gameConfig);
+} else {
+  document.getElementById("screenSizeMessage").classList.remove("hidden");
+}
+
 let score = 0; // Initialize score variable here
 let scoreText;
 let gameObjects = [];

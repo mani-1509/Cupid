@@ -2,6 +2,7 @@ const chatBox = document.getElementById("chat-box");
 const options = document.getElementById("options");
 const userInput = document.getElementById("user-input");
 const sendBtn = document.getElementById("send-btn");
+const loading = document.getElementById("loading");
 
 let conversation = [];
 
@@ -42,17 +43,27 @@ function addMessage(role, content) {
 
 // Send user response to the server
 async function sendResponse(response) {
+  // Show loading indicator
+  loading.classList.remove("hidden");
+
   conversation.push({ role: "user", content: response });
 
-  const res = await fetch("/chat", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ message: response, conversation }),
-  });
+  try {
+    const res = await fetch("/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message: response, conversation }),
+    });
 
-  const data = await res.json();
-  conversation = data.conversation;
-  addMessage("assistant", data.response);
+    const data = await res.json();
+    conversation = data.conversation;
+    addMessage("assistant", data.response);
+  } catch (error) {
+    addMessage("assistant", "An error occurred. Please try again.");
+  } finally {
+    // Hide loading indicator
+    loading.classList.add("hidden");
+  }
 }

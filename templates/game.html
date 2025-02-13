@@ -1,5 +1,9 @@
 <head>
   <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/game.css') }}"
+  />
+  <link
     href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
     rel="stylesheet"
   />
@@ -11,6 +15,16 @@
     {{ game.name }}
   </h1>
   <p class="text-center text-gray-600 mb-8">{{ game.description }}</p>
+
+  <!-- Message for Small/Medium Screens -->
+  <div
+    id="screenSizeMessage"
+    class="hidden text-center text-red-600 font-bold text-xl"
+  >
+    Games can only be played on large screens!
+  </div>
+
+  <!-- Game Container (Hidden on Small/Medium Screens) -->
   <div
     id="gameContainer"
     class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-4"
@@ -21,6 +35,7 @@
     </p>
   </div>
 
+  <!-- Victory Message -->
   <div
     id="message"
     class="hidden max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg text-center"

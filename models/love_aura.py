@@ -3,6 +3,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import os
+
 class VisionAPI:
     def __init__(self):
         # Configure Cloudinary
@@ -27,7 +28,7 @@ class VisionAPI:
             raise Exception(f"Image upload failed: {str(e)}")
 
     def analyze_image(self, image_url):
-        """Analyzes the image URL using OpenAI's vision model."""
+        """Analyzes the image URL using OpenAI's vision model to determine Love Aura and create a poem."""
         try:
             response = self.client.chat.completions.create(
                 model="Qwen/Qwen2-VL-72B-Instruct",
@@ -38,26 +39,23 @@ class VisionAPI:
                             {
                                 "type": "text", 
                                 "text": (
-                                    "Give text in english to describe the image\n\n"
-                                    "Format your responses in Markdown.\n\n"
-                                    "💖 You are the Love Aura AI Detector! 💖\n\n"
-                                    "Your task is to analyze a person's facial expression and determine their **Love Aura Personality** "
-                                    "based on their current mood. You will generate a playful, engaging, and Valentine’s-themed response "
-                                    "based on the detected expression.\n\n"
-                                    "### Mood-based Love Aura Interpretations:\n"
-                                    "😊 **Happy** → **\"Hopeless Romantic 💘\"** – Love follows you like WiFi! You're always radiating affection.\n"
-                                    "😲 **Surprised** → **\"Flirty Master 😉\"** – Your charm is a superpower! Sparks fly when you're around.\n"
-                                    "😐 **Neutral** → **\"Mysterious Lover 🔮\"** – You’re the plot twist in every love story, keeping everyone intrigued.\n"
-                                    "😠 **Angry** → **\"Chaotic Crush 🚀\"** – Love is a wild ride, and you're in the driver's seat! Fasten your seatbelt!\n"
-                                    "😢 **Sad** → **\"Softhearted Dreamer 💜\"** – Love songs hit you differently. You wear your heart on your sleeve.\n"
-                                    "😨 **Fearful** → **\"Shy Sweetheart 🌸\"** – Love makes your heart race! You believe in gentle connections.\n"
-                                    "😖 **Disgusted** → **\"Cool & Chill 🕶️\"** – You vibe first, love later! Your love game is effortless.\n\n"
-                                    "🔮 **Your response should:**\n"
-                                    "1. **Identify the mood** from the facial expression.\n"
-                                    "2. **Give them their Love Aura Personality** (title + emoji).\n"
-                                    "3. **Provide a short, fun, and relatable Valentine’s-themed description** of their love energy.\n"
-                                    "4. **Make it engaging and positive**, no matter the mood.\n\n"
-                                    "💘 Let the magic begin! Analyze the image and unveil their **Love Aura**!"
+                                    "You are the Love Aura AI Detector and a Poetic Genius! "
+                                    "Your task is to analyze the image and perform two steps:\n\n"
+                                    "Determine the Love Aura\n"
+                                    "1. Identify the mood of the person in the image based on their facial expression.\n"
+                                    "2. Assign them a Love Aura Personality based on the mood.\n"
+                                    "3. Write a short, fun description of their Love Aura Personality.\n\n"
+                                    "Poem\n"
+                                    "1. Describe the person: What do they look like? What emotions are they expressing?\n"
+                                    "2. Describe the environment: What is around them? What is the mood of the setting?\n"
+                                    "3. Weave a story: Connect the person and their environment into a cohesive narrative.\n"
+                                    "4. Use poetic language: Be creative with metaphors, similes, and imagery.\n"
+                                    "5. Keep it positive and uplifting: Even if the mood seems somber, find beauty in it.\n\n"
+                                    "Format:\n"
+                                    "1. Start with the Love Aura Personality and description.\n"
+                                    "2. Follow with the poem.\n"
+                                    "3. Use Markdown for formatting.\n\n"
+                                    "Now, analyze the image and create your response!"
                                 )
                             },
                             {
@@ -67,7 +65,7 @@ class VisionAPI:
                         ]
                     }
                 ],
-                max_tokens=800,
+                max_tokens=1000,  # Increased tokens for longer responses
             )
             return response.choices[0].message.content
         except Exception as e:

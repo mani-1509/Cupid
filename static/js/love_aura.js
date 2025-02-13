@@ -4,8 +4,11 @@ const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const captureBtn = document.getElementById("captureBtn");
 const capturedImage = document.getElementById("capturedImage");
+const resultDiv = document.getElementById("result");
+const loading = document.getElementById("loading");
 let mediaStream;
 
+// Start Camera
 startBtn.addEventListener("click", () => {
   navigator.mediaDevices
     .getUserMedia({ video: true })
@@ -21,6 +24,7 @@ startBtn.addEventListener("click", () => {
     });
 });
 
+// Stop Camera
 stopBtn.addEventListener("click", () => {
   if (mediaStream) {
     mediaStream.getTracks().forEach((track) => track.stop());
@@ -31,6 +35,7 @@ stopBtn.addEventListener("click", () => {
   }
 });
 
+// Capture Image
 captureBtn.addEventListener("click", () => {
   const ctx = canvas.getContext("2d");
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -39,7 +44,11 @@ captureBtn.addEventListener("click", () => {
   sendImageToBackend(dataUrl);
 });
 
+// Send Image to Backend
 function sendImageToBackend(imageDataUrl) {
+  // Show loading indicator
+  loading.classList.remove("hidden");
+
   const formData = new FormData();
   formData.append("file", dataURLtoBlob(imageDataUrl));
 
@@ -49,15 +58,22 @@ function sendImageToBackend(imageDataUrl) {
   })
     .then((response) => response.json())
     .then((data) => {
-      document.getElementById(
-        "result"
-      ).innerHTML = `<h2>❤️ Your Love Aura:</h2><p>${data.response}</p>`;
+      // Render Markdown Response
+      const markdownContent = `
+        ${data.response}
+      `;
+      resultDiv.innerHTML = marked.parse(markdownContent);
     })
     .catch((error) => {
-      document.getElementById("result").innerText = `Error: ${error.message}`;
+      resultDiv.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+    })
+    .finally(() => {
+      // Hide loading indicator
+      loading.classList.add("hidden");
     });
 }
 
+// Convert Data URL to Blob
 function dataURLtoBlob(dataURL) {
   const byteString = atob(dataURL.split(",")[1]);
   return new Blob(

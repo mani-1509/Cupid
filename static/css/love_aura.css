@@ -134,7 +134,7 @@ input[type="url"]::placeholder {
 
 #result {
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   overflow: auto;
   margin-top: 2rem;
   background: rgba(255, 105, 180, 0.15);
@@ -150,7 +150,7 @@ input[type="url"]::placeholder {
 #result h1,
 #result h2,
 #result h3 {
-  color: #ffebf3;
+  color: #fff;
   margin: 1rem 0;
   text-align: left;
 }
@@ -260,5 +260,30 @@ canvas {
   #result {
     padding: 1rem;
     margin-top: 1rem;
+  }
+}
+
+/* Loading Indicator */
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #fff; /* White text */
+  margin-top: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+.loading.hidden {
+  display: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
   }
 }

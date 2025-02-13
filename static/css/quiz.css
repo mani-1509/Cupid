@@ -1,58 +1,63 @@
-/* General Styles */
-.contaiiner {
-  font-family: "Poppins", Arial, sans-serif;
-  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-  color: #333;
+.container {
   text-align: center;
   padding: 20px;
-  margin: auto;
-  width: fit-content;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
+.con {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+}
+
 .chat-container {
-  background: rgba(255, 255, 255, 0.9);
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 32px rgba(255, 30, 120, 0.5);
+  border: 2px solid #ff4f58;
   max-width: 500px;
   width: 100%;
   animation: fadeIn 1s ease-in-out;
 }
 
 h1 {
+  text-align: center;
   font-size: 2.5rem;
-  color: #ff6b6b;
+  color: #fff;
   margin-bottom: 20px;
 }
 
 .chat-box {
   text-align: left;
-  margin-bottom: 20px;
-  max-height: 300px;
+  height: 500px;
   overflow-y: auto;
-  padding: 10px;
-  border: 1px solid #eee;
-  border-radius: 10px;
-  background: #fff;
+  padding: 20px;
+  box-shadow: 0 0px 32px rgba(255, 30, 120, 0.5);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: transparent;
 }
 
 .message {
   margin-bottom: 15px;
 }
 
-.message.user {
-  color: #ff6b6b;
+.message,
+.user {
+  color: #fff;
 }
 
-.message.assistant {
-  color: #555;
+.assistant {
+  color: #202020;
 }
 
-.message.assistant p {
+.message,
+.assistant p {
   margin: 0;
 }
 
@@ -79,13 +84,13 @@ h1 {
 input[type="text"] {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ff4f58;
   border-radius: 5px;
-  margin-top: 10px;
+  background: transparent;
 }
 
 button {
-  background: #ff6b6b;
+  background: #ff4c4c;
   color: #fff;
   border: none;
   padding: 12px 25px;
@@ -98,8 +103,9 @@ button {
 }
 
 button:hover {
-  background: #ff4c4c;
+  background: #ff6b6b;
   transform: scale(1.05);
+  box-shadow: 0 0 15px #ff5656;
 }
 
 /* Animations */
@@ -122,5 +128,11 @@ button:hover {
 
   .chat-container {
     padding: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .con {
+    flex-direction: column;
   }
 }

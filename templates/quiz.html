@@ -10,41 +10,45 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 {% extends "base.html" %} {% block content %}
-<div class="chat-container">
-  <h1>AI Love Language Matcher 🧩💌</h1>
-  <div class="options" id="options">
-    <div class="option" data-response="I love receiving gifts!">Gifts</div>
-    <div
-      class="option"
-      data-response="I enjoy spending quality time with loved ones."
-    >
-      Quality Time
-    </div>
-    <div
-      class="option"
-      data-response="I feel loved when someone does something helpful for me."
-    >
-      Acts of Service
-    </div>
-    <div
-      class="option"
-      data-response="I appreciate physical touch, like hugs or holding hands."
-    >
-      Physical Touch
-    </div>
-    <div
-      class="option"
-      data-response="I feel loved when someone says kind and affirming words to me."
-    >
-      Words of Affirmation
+<h1>AI Love Language Matcher 🧩💌</h1>
+<div class="con">
+  <div class="chat-container">
+    <div class="options" id="options">
+      <div class="option" data-response="I love receiving gifts!">Gifts</div>
+      <div
+        class="option"
+        data-response="I enjoy spending quality time with loved ones."
+      >
+        Quality Time
+      </div>
+      <div
+        class="option"
+        data-response="I feel loved when someone does something helpful for me."
+      >
+        Acts of Service
+      </div>
+      <div
+        class="option"
+        data-response="I appreciate physical touch, like hugs or holding hands."
+      >
+        Physical Touch
+      </div>
+      <div
+        class="option"
+        data-response="I feel loved when someone says kind and affirming words to me."
+      >
+        Words of Affirmation
+      </div>
     </div>
   </div>
+  <div class="chat">
+    <div class="chat-box" id="chat-box">
+      <div class="message assistant">{{ question }}</div>
+    </div>
+    <input type="text" id="user-input" placeholder="Type your response..." />
+    <button id="send-btn">Send</button>
+  </div>
 </div>
-<div class="chat-box" id="chat-box">
-  <div class="message assistant">{{ question }}</div>
-</div>
-<input type="text" id="user-input" placeholder="Type your response..." />
-<button id="send-btn">Send</button>
 
 <script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
 {% endblock %}

@@ -39,6 +39,7 @@ class VisionAPI:
                                 "type": "text", 
                                 "text": (
                                     "Give text in english to describe the image\n\n"
+                                    "Format your responses in Markdown.\n\n"
                                     "💖 You are the Love Aura AI Detector! 💖\n\n"
                                     "Your task is to analyze a person's facial expression and determine their **Love Aura Personality** "
                                     "based on their current mood. You will generate a playful, engaging, and Valentine’s-themed response "
